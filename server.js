@@ -37,7 +37,7 @@ app.use(render({
 }));
 
 var contextPath = require.resolve('./context.json');
-// var bearcat = new Bearcat([contextPath]);
+
 var bearcat = Bearcat.createApp([contextPath]);
 
 bearcat.start(function() {
