@@ -9,13 +9,11 @@
 /**
  * Module dependencies.
  */
-
-require('./lib/patch');
+require('./patch');
 var connect = require('connect');
 var render = require('connect-render');
 var urlrouter = require('urlrouter');
 var config = require('./config');
-var todo = require('./controllers/todo');
 var Bearcat = require('bearcat');
 
 var app = connect();
@@ -37,8 +35,6 @@ app.use(render({
     }
   }
 }));
-
-
 
 var contextPath = require.resolve('./context.json');
 // var bearcat = new Bearcat([contextPath]);
