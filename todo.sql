@@ -11,14 +11,14 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for todo
 -- ----------------------------
-DROP TABLE IF EXISTS `todo`;
-CREATE TABLE `todo` (
-  `id` int(11) NOT NULL auto_increment,
+DROP TABLE IF EXISTS `bearcat_todo`;
+CREATE TABLE `bearcat_todo` (
+  `id` bigint(20) NOT NULL auto_increment,
   `title` varchar(300) default NULL,
-  `finished` int(11) default '0',
-  `post_date` datetime default NULL,
+  `finished` int(11) default 0,
+  `post_date` bigint(20) default 0,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records 

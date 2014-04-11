@@ -16,6 +16,7 @@ var render = require('connect-render');
 var urlrouter = require('urlrouter');
 var config = require('./config');
 var todo = require('./controllers/todo');
+var Bearcat = require('bearcat');
 
 var app = connect();
 
@@ -24,7 +25,7 @@ app.use(connect.cookieParser());
 app.use(connect.query());
 app.use(connect.bodyParser());
 app.use(connect.session({secret: config.session_secret}));
-app.use(connect.csrf());
+// app.use(connect.csrf());
 app.use(render({
   root: __dirname + '/views',
   layout: 'layout.html',
@@ -37,19 +38,40 @@ app.use(render({
   }
 }));
 
-/**
- * Routing
- */
-var router = urlrouter(function (app) {
-  app.get('/', todo.index);
-  app.post('/todo/new', todo.new);
-  app.get('/todo/:id', todo.view);
-  app.get('/todo/:id/edit', todo.edit);
-  app.post('/todo/:id/edit', todo.save);
-  app.get('/todo/:id/delete', todo.delete);
-  app.get('/todo/:id/finish', todo.finish);
-});
-app.use(router);
 
-app.listen(config.port);
-console.log('Server start on ' + config.port);
+
+var contextPath = require.resolve('./context.json');
+// var bearcat = new Bearcat([contextPath]);
+var bearcat = Bearcat.createApp([contextPath]);
+
+bearcat.start(function() {
+  /**
+   * Routing
+   */
+  var todoController = bearcat.getBean('todoController');
+
+  /**
+   * Routing
+   */
+  var router = urlrouter(function (app) {
+    app.get('/', bearcat.getRoute(todoController, "index"));
+    app.post('/todo/new', bearcat.getRoute(todoController, "new"));
+    app.get('/todo/:id', bearcat.getRoute(todoController, "view"));
+    app.get('/todo/:id/edit', bearcat.getRoute(todoController, "edit"));
+    app.post('/todo/:id/edit', bearcat.getRoute(todoController, "save"));
+    app.get('/todo/:id/delete', bearcat.getRoute(todoController, "delete"));
+    app.get('/todo/:id/finish', bearcat.getRoute(todoController, "finish"));
+  });
+  app.use(router);
+
+  // app.get('/', bearcat.getRoute(todoController, "index"));
+  // app.post('/todo/new', todoController.new);
+  // app.get('/todo/:id', todoController.view);
+  // app.get('/todo/:id/edit', todoController.edit);
+  // app.post('/todo/:id/edit', todoController.save);
+  // app.get('/todo/:id/delete', todoController.delete);
+  // app.get('/todo/:id/finish', todoController.finish);
+  // start app
+  app.listen(config.port);
+  console.log('Server start on ' + config.port);
+});

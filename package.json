@@ -17,7 +17,9 @@
     "connect": "1.x || >= 2.2.0",
     "connect-render": ">=0.1.4",
     "urlrouter": ">=0.2.0",
-    "mongoskin": ">=0.3.6"
+    "mongoskin": ">=0.3.6",
+    "bearcat": "~0.1.0",
+    "bearcat-dao": "~0.1.0"
   },
   "devDependencies": {
     "should": "*",
