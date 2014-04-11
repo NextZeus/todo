@@ -60,13 +60,6 @@ bearcat.start(function() {
   });
   app.use(router);
 
-  // app.get('/', bearcat.getRoute(todoController, "index"));
-  // app.post('/todo/new', todoController.new);
-  // app.get('/todo/:id', todoController.view);
-  // app.get('/todo/:id/edit', todoController.edit);
-  // app.post('/todo/:id/edit', todoController.save);
-  // app.get('/todo/:id/delete', todoController.delete);
-  // app.get('/todo/:id/finish', todoController.finish);
   // start app
   app.listen(config.port);
   console.log('Server start on ' + config.port);
