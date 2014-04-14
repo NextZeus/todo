@@ -56,5 +56,5 @@ module.exports = {
 		name: "domainDaoSupport",
 		ref: "domainDaoSupport"
 	}],
-	"initMethod": "init"
+	"init": "init"
 }

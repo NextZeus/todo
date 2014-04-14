@@ -9,19 +9,19 @@
 		"func": "node_modules.bearcat-dao.lib.connection.sql.mysqlConnectionManager",
 		"props": [{
 			"name": "port",
-			"value": 3306
+			"value": "${mysql.port}"
 		}, {
 			"name": "host",
-			"value": "localhost"
+			"value": "${mysql.host}"
 		}, {
 			"name": "user",
-			"value": "root"
+			"value": "${mysql.user}"
 		}, {
 			"name": "password",
-			"value": "test"
+			"value": "${mysql.password}"
 		}, {
 			"name": "database",
-			"value": "bearcat_test"
+			"value": "${mysql.database}"
 		}]
 	}]
 }
