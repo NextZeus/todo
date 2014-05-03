@@ -9,7 +9,7 @@ this is a simple web application todo, it is written by [Bearcat](https://github
 ```
 git clone https://github.com/bearcatnode/todo.git
 cd todo  
-$ npm install  
+npm install  
 ```
     
 ## Update Mysql
@@ -20,7 +20,7 @@ execute [todo.sql](https://github.com/bearcatnode/todo/blob/master/todo.sql)
 ## Run
 
 ```    
-$ node server.js
+node server.js
 ```
 
 ## Run with prod env
@@ -35,7 +35,7 @@ node server.js env=prod
 
 (The MIT License)
 
-Copyright (c) 2011, 2012 fengmk2 <fengmk2@gmail.com>.
+Copyright (c) 2011, 2012 fengmk2 <fengmk2@gmail.com>.  
 Copyright (c) 2014, fantasyni <fantasyni@163.com>.
 
 Permission is hereby granted, free of charge, to any person obtaining
