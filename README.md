@@ -14,7 +14,7 @@ npm install
     
 ## Update Mysql
 
-create database with configuration corresponded to [dev mysql.json](https://github.com/bearcatnode/todo/blob/master/config/dev/mysql.json)
+create database with configuration corresponded to [dev mysql.json](https://github.com/bearcatnode/todo/blob/master/config/dev/mysql.json)  
 execute [todo.sql](https://github.com/bearcatnode/todo/blob/master/todo.sql)
 
 ## Run
