@@ -1,5 +1,5 @@
 {
-	"name": "todo-bearcat",
+	"name": "bearcat-todo",
 	"dependencies": {
 		"bearcat-dao": "*"
 	},

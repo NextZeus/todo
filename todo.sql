@@ -4,7 +4,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `bearcat_todo`;
 CREATE TABLE `bearcat_todo` (
-  `id` bigint(20) NOT NULL auto_increment,
+  `id` bigint(20) NOT NULL,
   `title` varchar(300) default NULL,
   `finished` int(11) default 0,
   `post_date` bigint(20) default 0,
