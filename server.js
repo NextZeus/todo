@@ -18,11 +18,15 @@ var Bearcat = require('bearcat');
 
 var app = connect();
 
-app.use('/public', connect.static(__dirname + '/public', {maxAge: 3600000 * 24 * 30}));
+app.use('/public', connect.static(__dirname + '/public', {
+  maxAge: 3600000 * 24 * 30
+}));
 app.use(connect.cookieParser());
 app.use(connect.query());
 app.use(connect.bodyParser());
-app.use(connect.session({secret: config.session_secret}));
+app.use(connect.session({
+  secret: config.session_secret
+}));
 // app.use(connect.csrf());
 app.use(render({
   root: __dirname + '/views',
@@ -30,7 +34,7 @@ app.use(render({
   cache: config.debug, // `false` for debug
   helpers: {
     config: config,
-    _csrf: function (req, res) {
+    _csrf: function(req, res) {
       return req.session._csrf;
     }
   }
@@ -44,27 +48,27 @@ bearcat.start(function() {
   /**
    * Routing
    */
-  var todoController = bearcat.getBean('todoController');
+  // var todoController = bearcat.getBean('todoController');
 
   /**
    * Routing
    */
-  var router = urlrouter(function (app) {
-    app.get('/', todoController.index.bind(todoController));
-    app.post('/todo/new', todoController.new.bind(todoController));
-    app.get('/todo/:id', todoController.view.bind(todoController));
-    app.get('/todo/:id/edit', todoController.edit.bind(todoController));
-    app.post('/todo/:id/edit', todoController.save.bind(todoController));
-    app.get('/todo/:id/delete', todoController.delete.bind(todoController));
-    app.get('/todo/:id/finish', todoController.finish.bind(todoController));
- 
-    // app.get('/', bearcat.getRoute(todoController, "index"));
-    // app.post('/todo/new', bearcat.getRoute(todoController, "new"));
-    // app.get('/todo/:id', bearcat.getRoute(todoController, "view"));
-    // app.get('/todo/:id/edit', bearcat.getRoute(todoController, "edit"));
-    // app.post('/todo/:id/edit', bearcat.getRoute(todoController, "save"));
-    // app.get('/todo/:id/delete', bearcat.getRoute(todoController, "delete"));
-    // app.get('/todo/:id/finish', bearcat.getRoute(todoController, "finish"));
+  var router = urlrouter(function(app) {
+    // app.get('/', todoController.index.bind(todoController));
+    // app.post('/todo/new', todoController.new.bind(todoController));
+    // app.get('/todo/:id', todoController.view.bind(todoController));
+    // app.get('/todo/:id/edit', todoController.edit.bind(todoController));
+    // app.post('/todo/:id/edit', todoController.save.bind(todoController));
+    // app.get('/todo/:id/delete', todoController.delete.bind(todoController));
+    // app.get('/todo/:id/finish', todoController.finish.bind(todoController));
+
+    app.get('/', bearcat.getRoute("todoController", "index"));
+    app.post('/todo/new', bearcat.getRoute("todoController", "new"));
+    app.get('/todo/:id', bearcat.getRoute("todoController", "view"));
+    app.get('/todo/:id/edit', bearcat.getRoute("todoController", "edit"));
+    app.post('/todo/:id/edit', bearcat.getRoute("todoController", "save"));
+    app.get('/todo/:id/delete', bearcat.getRoute("todoController", "delete"));
+    app.get('/todo/:id/finish', bearcat.getRoute("todoController", "finish"));
   });
   app.use(router);
 

@@ -2,28 +2,33 @@
 
 ## Description
 
-本应用修改自一个简单的python示例: [simple-todo: 一个简易的 todo 程序 - web.py 中文教程](http://simple-is-better.com/news/309)
+this is a simple web application todo, it is written by [Bearcat](https://github.com/bearcatnode/bearcat) to manage business objects and enable to write simple POJOs. This demo is easy, simple and mantainable.  
 
 ## Install
 
-```bash
-$ npm install
+```
+git clone https://github.com/bearcatnode/todo.git
+cd todo  
+$ npm install  
 ```
     
+## Update Mysql
+
+create database with configuration corresponded to [dev mysql.json](https://github.com/bearcatnode/todo/blob/master/config/dev/mysql.json)
+execute [todo.sql](https://github.com/bearcatnode/todo/blob/master/todo.sql)
+
 ## Run
 
-```bash    
+```    
 $ node server.js
 ```
-    
-## Demo
 
-[http://hello.cnodejs.net/](http://hello.cnodejs.net/)
+## Run with prod env
 
-## Test
+update configuration in [prod dir](https://github.com/bearcatnode/todo/tree/master/config/prod)    
 
-```bash
-$ make test
+```
+node server.js env=prod
 ```
 
 ## License 
@@ -31,6 +36,7 @@ $ make test
 (The MIT License)
 
 Copyright (c) 2011, 2012 fengmk2 <fengmk2@gmail.com>.
+Copyright (c) 2014, fantasyni <fantasyni@163.com>.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
