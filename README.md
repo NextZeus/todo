@@ -2,7 +2,7 @@
 
 ## Description
 
-this is a simple web application todo, it is written by [Bearcat](https://github.com/bearcatnode/bearcat) to manage business objects and enable to write simple POJOs. This demo is easy, simple and mantainable.  
+this is a simple web application todo, it is written by [Bearcat](https://github.com/bearcatnode/bearcat) to manage business objects and enable to write simple POJOs. [Bearcat-dao](https://github.com/bearcatnode/bearcat-dao) is also used to manage database O/R mapping. This demo is easy, simple and mantainable.  
 
 ## Install
 
