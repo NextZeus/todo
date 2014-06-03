@@ -14,7 +14,7 @@
     "connect": "1.x || >= 2.2.0",
     "connect-render": ">=0.1.4",
     "urlrouter": ">=0.2.0",
-    "bearcat": "~0.1.0",
+    "bearcat": "0.2.x",
     "bearcat-dao": "~0.1.0"
   },
   "devDependencies": {
