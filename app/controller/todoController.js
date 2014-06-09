@@ -1,9 +1,10 @@
 var TodoController = function() {
-	this.todoService = null;
+	this.$id = "todoController";
+	this.$todoService = null;
 }
 
 TodoController.prototype.index = function(req, res, next) {
-	this.todoService.getList([0, 50], function(err, results) {
+	this.$todoService.getList([0, 50], function(err, results) {
 		if (err) {
 			console.log(err);
 			return;
@@ -22,7 +23,7 @@ TodoController.prototype.new = function(req, res, next) {
 			message: '标题是必须的'
 		});
 	}
-	this.todoService.addTodo([title, Date.now()], function(err, result) {
+	this.$todoService.addTodo([title, Date.now()], function(err, result) {
 		if (err) {
 			return next(err);
 		}
@@ -36,7 +37,7 @@ TodoController.prototype.view = function(req, res, next) {
 
 TodoController.prototype.edit = function(req, res, next) {
 	var id = req.params.id;
-	this.todoService.getTodoById(id, function(err, result) {
+	this.$todoService.getTodoById(id, function(err, result) {
 		if (err) {
 			return next(err);
 		}
@@ -62,7 +63,7 @@ TodoController.prototype.save = function(req, res, next) {
 		});
 	}
 
-	this.todoService.updateTodo(title, id, function(err, result) {
+	this.$todoService.updateTodo(title, id, function(err, result) {
 		if (err) {
 			return next(err);
 		}
@@ -73,7 +74,7 @@ TodoController.prototype.save = function(req, res, next) {
 TodoController.prototype.delete = function(req, res, next) {
 	var id = req.params.id;
 
-	this.todoService.deleteById(id, function(err, result) {
+	this.$todoService.deleteById(id, function(err, result) {
 		if (err) {
 			return next(err);
 		}
@@ -85,7 +86,7 @@ TodoController.prototype.finish = function(req, res, next) {
 	var finished = req.query.status === 'yes' ? 1 : 0;
 	var id = req.params.id;
 
-	this.todoService.updateTodoFinished(finished, id, function(err, result) {
+	this.$todoService.updateTodoFinished(finished, id, function(err, result) {
 		if (err) {
 			return next(err);
 		}
@@ -93,11 +94,13 @@ TodoController.prototype.finish = function(req, res, next) {
 	});
 }
 
-module.exports = {
-	id: "todoController",
-	func: TodoController,
-	props: [{
-		name: "todoService",
-		ref: "todoService"
-	}]
-}
+module.exports = TodoController;
+
+// module.exports = {
+// 	id: "todoController",
+// 	func: TodoController,
+// 	props: [{
+// 		name: "todoService",
+// 		ref: "todoService"
+// 	}]
+// }
