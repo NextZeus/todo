@@ -11,7 +11,7 @@
   },
   "main": "server.js",
   "dependencies": {
-    "connect": "1.x || >= 2.2.0",
+    "connect": "~2",
     "connect-render": ">=0.1.4",
     "urlrouter": ">=0.2.0",
     "bearcat": "0.2.x",
