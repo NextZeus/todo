@@ -70,7 +70,7 @@ TodoController.prototype.edit = function(req, res, next) {
 
 		result = result[0];
 		res.render('todo/edit.html', {
-			todo: result
+			todo: result.toJSON()
 		});
 	});
 }
