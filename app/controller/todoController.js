@@ -1,3 +1,5 @@
+var bearcat = require('bearcat');
+
 var TodoController = function() {
 	this.$id = "todoController";
 	this.$todoService = null;
@@ -9,8 +11,14 @@ TodoController.prototype.index = function(req, res, next) {
 			console.log(err);
 			return;
 		}
+
+		var r = [];
+		for (var i = 0; i < results.length; i++) {
+			r.push(results[i].toJSON());
+		}
+
 		res.render('index.html', {
-			todos: results
+			todos: r
 		});
 	});
 }
@@ -23,7 +31,23 @@ TodoController.prototype.new = function(req, res, next) {
 			message: '标题是必须的'
 		});
 	}
-	this.$todoService.addTodo([title, Date.now()], function(err, result) {
+
+	var todoModel = bearcat.getModel("todoModel");
+	var r = todoModel.$pack({
+		id: 0,
+		title: title,
+		finished: 0,
+		post_date: Date.now()
+	});
+
+	if (r) {
+		console.log(r.stack);
+		return res.render('error.html', {
+			message: r.message
+		});
+	}
+
+	this.$todoService.addTodo(todoModel, function(err, result) {
 		if (err) {
 			return next(err);
 		}
@@ -95,12 +119,3 @@ TodoController.prototype.finish = function(req, res, next) {
 }
 
 module.exports = TodoController;
-
-// module.exports = {
-// 	id: "todoController",
-// 	func: TodoController,
-// 	props: [{
-// 		name: "todoService",
-// 		ref: "todoService"
-// 	}]
-// }

@@ -18,6 +18,8 @@ var Bearcat = require('bearcat');
 
 var app = connect();
 
+process.env.BEARCAT_DEBUG = true;
+
 app.use('/public', connect.static(__dirname + '/public', {
   maxAge: 3600000 * 24 * 30
 }));
@@ -54,14 +56,6 @@ bearcat.start(function() {
    * Routing
    */
   var router = urlrouter(function(app) {
-    // app.get('/', todoController.index.bind(todoController));
-    // app.post('/todo/new', todoController.new.bind(todoController));
-    // app.get('/todo/:id', todoController.view.bind(todoController));
-    // app.get('/todo/:id/edit', todoController.edit.bind(todoController));
-    // app.post('/todo/:id/edit', todoController.save.bind(todoController));
-    // app.get('/todo/:id/delete', todoController.delete.bind(todoController));
-    // app.get('/todo/:id/finish', todoController.finish.bind(todoController));
-
     app.get('/', bearcat.getRoute("todoController", "index"));
     app.post('/todo/new', bearcat.getRoute("todoController", "new"));
     app.get('/todo/:id', bearcat.getRoute("todoController", "view"));

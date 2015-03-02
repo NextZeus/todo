@@ -7,8 +7,8 @@ TodoService.prototype.getList = function(params, cb) {
 	return this.$todoDao.getList(params, cb);
 }
 
-TodoService.prototype.addTodo = function(params, cb) {
-	return this.$todoDao.addTodo(params, cb);
+TodoService.prototype.addTodo = function(obj, cb) {
+	return this.$todoDao.addTodo(obj, cb);
 }
 
 TodoService.prototype.getTodoById = function(id, cb) {
@@ -28,12 +28,3 @@ TodoService.prototype.deleteById = function(id, cb) {
 }
 
 module.exports = TodoService;
-
-// module.exports = {
-// 	id: "todoService",
-// 	func: TodoService,
-// 	props: [{
-// 		name: "todoDao",
-// 		ref: "todoDao"
-// 	}]
-// }
