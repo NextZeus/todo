@@ -34,9 +34,7 @@ TodoController.prototype.new = function(req, res, next) {
 
 	var todoModel = bearcat.getModel("todoModel");
 	var r = todoModel.$pack({
-		id: 0,
 		title: title,
-		finished: 0,
 		post_date: Date.now()
 	});
 
